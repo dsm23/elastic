@@ -18,16 +18,12 @@
 
 ## Filters
 
-`GET /bank/_search
-
+```
+GET /bank/_search
 {
-
   "query": { "match_all": {} },
-
   "sort": [
-
   { "account_number": "asc" }
-
   ]
-
-}`
+}
+```
