@@ -20,6 +20,8 @@ Nodes List within cluster
 List all Indices
 `GET /_cat/indices?v`
 
+https://www.elastic.co/guide/en/elasticsearch/reference/current/_introducing_the_query_language.html
+
 ## 2. Queries
 
 `GET /customer/external/1?pretty`
@@ -70,3 +72,15 @@ GET /bank/_search
   "query": { "match": { "address": "mill" } }
 }
 ```
+```javascript
+GET /bank/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        { "match": { "address": "mill" } },
+        { "match": { "address": "lane" } }
+      ]
+    }
+  }
+}
