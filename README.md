@@ -1,14 +1,14 @@
-# Elastic Search Documentation
+# Elastic Search Query Commands
 
 #### by David Murdoch
 
 ## Contents
 
-*[Basics](#basics)*
+*[1. Basics](#basics)*
 
-*[Filters](#queries)*
+*[2. Queries](#queries)*
 
-## Basics
+## 1. Basics
 
 Cluster Health
 
@@ -20,7 +20,11 @@ Nodes List within cluster
 List all Indices
 `GET /_cat/indices?v`
 
-## Queries
+## 2. Queries
+
+`GET /customer/external/1?pretty`
+
+where pretty is the name of an index
 
 ```
 GET /bank/_search
