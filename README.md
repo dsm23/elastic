@@ -16,7 +16,7 @@
 
 `GET /_cat/indices?v`
 
-## Filters
+## Queries
 
 ```
 GET /bank/_search
@@ -25,5 +25,40 @@ GET /bank/_search
   "sort": [
   { "account_number": "asc" }
   ]
+}
+```
+```
+GET /bank/_search
+{
+  "query": { "match_all": {} },
+  "size": 1
+}
+```
+```
+GET /bank/_search
+{
+  "query": { "match_all": {} },
+  "from": 10,
+  "size": 10
+}
+```
+```
+GET /bank/_search
+{
+  "query": { "match_all": {} },
+  "sort": { "balance": { "order": "desc" } }
+}
+```
+```
+GET /bank/_search
+{
+  "query": { "match_all": {} },
+  "_source": ["account_number", "balance"]
+}
+```
+```
+GET /bank/_search
+{
+  "query": { "match": { "address": "mill" } }
 }
 ```
