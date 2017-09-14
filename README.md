@@ -72,6 +72,8 @@ GET /bank/_search
   "query": { "match": { "address": "mill" } }
 }
 ```
+
+Two match queries and returns all accounts containing "mill" and "lane"
 ```javascript
 GET /bank/_search
 {
