@@ -28,6 +28,7 @@ https://www.elastic.co/guide/en/elasticsearch/reference/current/_introducing_the
 
 where pretty is the name of an index
 
+match_all query is simply a search for all documents in the specified index.
 ```javascript
 GET /bank/_search
 {
@@ -37,6 +38,8 @@ GET /bank/_search
   ]
 }
 ```
+where bank is the index
+
 ```javascript
 GET /bank/_search
 {
@@ -86,3 +89,18 @@ GET /bank/_search
     }
   }
 }
+
+Two match queries and returns all accounts containing neither "mill" and "lane"
+```javascript
+GET /bank/_search
+{
+  "query": {
+    "bool": {
+      "must_not": [
+        { "match": { "address": "mill" } },
+        { "match": { "address": "lane" } }
+      ]
+    }
+  }
+}
+```
