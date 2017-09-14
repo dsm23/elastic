@@ -35,14 +35,14 @@ GET /bank/_search
   ]
 }
 ```
-```
+```javascript
 GET /bank/_search
 {
   "query": { "match_all": {} },
   "size": 1
 }
 ```
-```
+```javascript
 GET /bank/_search
 {
   "query": { "match_all": {} },
@@ -50,21 +50,21 @@ GET /bank/_search
   "size": 10
 }
 ```
-```
+```javascript
 GET /bank/_search
 {
   "query": { "match_all": {} },
   "sort": { "balance": { "order": "desc" } }
 }
 ```
-```
+```javascript
 GET /bank/_search
 {
   "query": { "match_all": {} },
   "_source": ["account_number", "balance"]
 }
 ```
-```
+```javascript
 GET /bank/_search
 {
   "query": { "match": { "address": "mill" } }
