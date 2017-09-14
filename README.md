@@ -4,8 +4,9 @@
 
 ## Contents
 
-*[Basics](https://github.com/dsm23/elastic#basics)*
-*[Filters](https://github.com/dsm23/elastic#filters)*
+*[Basics](#basics)*
+
+*[Filters](#filters)*
 
 ## Basics
 
@@ -16,3 +17,11 @@
 `GET /_cat/indices?v`
 
 ## Filters
+
+GET /bank/_search
+{
+  "query": { "match_all": {} },
+  "sort": [
+    { "account_number": "asc" }
+  ]
+}
