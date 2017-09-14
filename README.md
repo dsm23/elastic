@@ -6,7 +6,7 @@
 
 *[Basics](#basics)*
 
-*[Filters](#filters)*
+*[Filters](#queries)*
 
 ## Basics
 
