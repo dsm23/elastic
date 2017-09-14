@@ -26,7 +26,7 @@ List all Indices
 
 where pretty is the name of an index
 
-```
+```java
 GET /bank/_search
 {
   "query": { "match_all": {} },
