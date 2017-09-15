@@ -4,9 +4,9 @@
 
 ## Contents
 
-**[Basics](#basics)**
+[Basics](#basics)
 
-**[Queries](#queries)**
+[Queries](#queries)
 
 ## Basics
 
