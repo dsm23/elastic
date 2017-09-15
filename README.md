@@ -4,11 +4,11 @@
 
 ## Contents
 
-*[1. Basics](#basics)*
+**[Basics](#basics)**
 
-*[2. Queries](#queries)*
+**[Queries](#queries)**
 
-## 1. Basics
+## Basics
 
 Cluster Health
 
@@ -22,7 +22,7 @@ List all Indices
 
 https://www.elastic.co/guide/en/elasticsearch/reference/current/_introducing_the_query_language.html
 
-## 2. Queries
+## Queries
 
 `GET /customer/external/1?pretty`
 
@@ -104,3 +104,5 @@ GET /bank/_search
   }
 }
 ```
+
+#### Agregations
