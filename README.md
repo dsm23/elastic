@@ -106,3 +106,43 @@ GET /bank/_search
 ```
 
 #### Agregations
+
+```javascript
+GET /bank/_search
+{
+  "size": 0,
+  "aggs": {
+    "group_by_state": {
+      "terms": {
+        "field": "state.keyword"
+      }
+    }
+  }
+}
+```
+
+equivalent to 
+```sql
+SELECT state, COUNT(*) FROM bank GROUP BY state ORDER BY COUNT(*) DESC
+```
+
+```javascript
+GET /bank/_search
+{
+  "size": 0,
+  "aggs": {
+    "group_by_state": {
+      "terms": {
+        "field": "state.keyword"
+      },
+      "aggs": {
+        "average_balance": {
+          "avg": {
+            "field": "balance"
+          }
+        }
+      }
+    }
+  }
+}
+```
