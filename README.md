@@ -147,7 +147,7 @@ GET /bank/_search
 }
 ```
 
-```ruby
+```python
 GET /bank/_search
 {
   "size": 0,
