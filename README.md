@@ -8,6 +8,8 @@
 
 [Queries](#queries)
 
+[Java](#java)
+
 ## Basics
 
 Cluster Health
@@ -20,7 +22,21 @@ Nodes List within cluster
 List all Indices
 `GET /_cat/indices?v`
 
+HTTP REQUESTS:
+
+GET,POST, PUT, DELETE
+
+GET is the most used for queries
+
 https://www.elastic.co/guide/en/elasticsearch/reference/current/_introducing_the_query_language.html
+
+how to add a jsopn file to an index
+
+```
+curl -H "Content-Type: application/json" -XPOST 'localhost:9200/bank/account/_bulk?pretty&refresh' --data-binary "@accounts.json
+```
+
+https://www.elastic.co/guide/en/elasticsearch/reference/index.html
 
 ## Queries
 
@@ -127,6 +143,10 @@ SELECT state, COUNT(*) FROM bank GROUP BY state ORDER BY COUNT(*) DESC
 ```
 
 ```javascript
+
+```
+
+```javascript
 GET /bank/_search
 {
   "size": 0,
@@ -147,7 +167,19 @@ GET /bank/_search
 }
 ```
 
-```python
+equivalent to 
+```sql
+SELECT state, COUNT(*), AVG(balance) FROM bank GROUP BY state ORDER BY COUNT(*) DESC
+```
+Query DSL | Operand
+|:---:|:---|
+must | AND
+must_not | NOT
+should | OR
+
+important terms: query, filter, aggr
+
+```javascript
 GET /bank/_search
 {
   "size": 0,
@@ -170,3 +202,67 @@ GET /bank/_search
   }
 }
 ```
+
+## Java
+
+Does not involve Pages and PageObject
+
+Placed in the Step Libraries folder
+```java
+static Node node;
+static Client client;
+
+public static void setup(){
+
+	node = nodeBuilder()
+		.settings(Settings.builder()
+			.put("path.home", "/"))
+		.clusterName("elasticsearch").client(true).node();
+	client = node.client();
+
+}
+```
+https://www.elastic.co/guide/en/elasticsearch/client/java-api/2.0/node-client.html
+
+No need for @Steps
+```java
+	ElasticSearchSteps elasticSearchSteps;
+    SearchResponse searchResponse;
+    SearchResponse getAllEntriesResponse;
+    DeleteResponse deleteResponse;
+    IndexResponse indexResponse;
+```
+[SERVICE_UNAVAILABLE/1/state not recovered / initialized]
+
+launch elasticsearch.bat
+
+This way it does not require a path home
+
+can also install elasticsearch with a msi file but this requires changing the path home
+
+`size:` defaults to 10
+
+
+
+```java
+static Node node;
+static Client client;
+
+public static void setup(){
+
+	node = nodeBuilder()
+		.settings(Settings.builder()
+		.put("path.home", "/"))
+		.clusterName("elasticsearch").client(true).node();
+	client = node.client();
+
+
+}
+```
+<elasticsearch.version>5.6.1</elasticsearch.version>
+
+<dependency>
+    <groupId>org.elasticsearch.client</groupId>
+    <artifactId>transport</artifactId>
+    <version>5.0.0-beta1</version>
+</dependency>
