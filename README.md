@@ -54,9 +54,53 @@ https://www.elastic.co/guide/en/elasticsearch/reference/index.html
 
 ```javascript
 GET bank/_search?q=gender=M
+
+GET _all/_search?q=gender=M
 ```
 
-`GET _all`
+#### match_all
+
+```javascript
+GET /bank/_search
+{
+  "query": { "match_all": {} }
+}
+```
+
+#### size
+
+size defaults to 10 unless told otherwise
+
+Note the comma, no comma on the bottom statement
+
+```javascript
+GET /bank/_search
+{
+  "query": { "match_all": {} },
+  "size": 1
+}
+```
+
+#### bool
+
+```javascript
+GET /bank/_search
+{
+  "query": { "match": { "address": "mill" } }
+}
+
+GET /bank/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        { "match": { "address": "mill" } },
+        { "match": { "address": "lane" } }
+      ]
+    }
+  }
+}
+```
 
 `GET /customer/external/1?pretty`
 
