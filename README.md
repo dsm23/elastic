@@ -12,7 +12,7 @@
 	
 	* [match_all](#match_all)
 	
-	* [size](#size)
+	* [from/size](#from/size)
 	
 	* [bool](#bool)
 	
@@ -46,7 +46,7 @@ GET /_cat/indices?v
 
 HTTP REQUESTS:
 
-GET,POST, PUT, DELETE
+GET, POST, PUT, DELETE
 
 GET is the most used for queries
 
@@ -62,6 +62,8 @@ https://www.elastic.co/guide/en/elasticsearch/reference/index.html
 
 ## Queries
 
+https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+
 #### URI Search
 
 ```javascript
@@ -69,6 +71,22 @@ GET bank/_search?q=gender=M
 
 GET _all/_search?q=gender=M
 ```
+
+#### query terms
+
+
+Note the use of the phrase keyword
+
+```javascript
+GET /bank/_search
+{
+    "query" : {
+        "term" : { "gender.keyword" : "F" }
+    }
+}
+```
+
+
 
 #### match_all
 
@@ -92,16 +110,17 @@ query_string		| Supports the compact Lucene query string syntax, allowing you to
 simple_query_string	| A simpler, more robust version of the query_string syntax suitable for exposing directly to users.
 
 
-#### size
+#### from/size
 
 size defaults to 10 unless told otherwise
 
-Note the comma, no comma on the bottom statement
+Note the commas, no comma on the bottom statement
 
 ```javascript
 GET /bank/_search
 {
   "query": { "match_all": {} },
+  "from": 0,
   "size": 1
 }
 ```
