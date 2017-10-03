@@ -145,6 +145,34 @@ GET /bank/_search
 
 #### filter
 
+#### range
+
+```javascript
+GET /bank/_search
+{
+  "query": {
+    "bool": {
+      "must": { "match_all": {} },
+      "filter": {
+        "range": {
+          "balance": {
+            "gte": 20000,
+            "lte": 35000
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+|  | Definition |
+|:---:|:---:|
+| gte  | Greater than or equal to |
+| gt | Greater than|
+| lte | Less than or equal to|
+| lt | Less than|
+
 # needs work
 
 `GET /customer/external/1?pretty`
@@ -254,12 +282,7 @@ SELECT state, COUNT(*) FROM bank GROUP BY state ORDER BY COUNT(*) DESC
 
 ```
 
-|  ||
-|:---:|:---:|
-| gte  | Greater than or equal to |
-| gt | Greater than|
-| lte | Less than or equal to|
-| lt | Less than|
+
 
 ```javascript
 GET /bank/_search
