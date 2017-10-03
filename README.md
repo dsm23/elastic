@@ -82,7 +82,7 @@ GET /bank/_search
 Others:
 
 | Query | Definition |
-|:---:|:---:|
+|---|---|
 match 				| The standard query for performing full text queries, including fuzzy matching and phrase or proximity queries.
 match_phrase		| Like the match query but used for matching exact phrases or word proximity matches.
 match_phrase_prefix | The poor man’s search-as-you-type. Like the match_phrase query, but does a wildcard search on the final word.
