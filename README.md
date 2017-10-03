@@ -17,17 +17,20 @@
 Cluster Health
 
 ```javascript
-GET /_cat/health?v```
+GET /_cat/health?v
+```
 
 Nodes List within cluster
 
 ```javascript
-GET /_cat/nodes?v```
+GET /_cat/nodes?v
+```
 
 List all Indices
 
 ```javascript
-GET /_cat/indices?v```
+GET /_cat/indices?v
+```
 
 HTTP REQUESTS:
 
