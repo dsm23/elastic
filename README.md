@@ -54,7 +54,7 @@ https://www.elastic.co/guide/en/elasticsearch/reference/current/_introducing_the
 
 how to add a json file to an index
 
-```shell
+```shell session
 curl -H "Content-Type: application/json" -XPOST 'localhost:9200/bank/account/_bulk?pretty&refresh' --data-binary "@accounts.json
 ```
 
