@@ -102,6 +102,29 @@ GET /bank/_search
 }
 ```
 
+#### sort
+
+```javascript
+GET /bank/_search
+{
+  "query": { "match_all": {} },
+  "sort": { "balance": { "order": "desc" } }
+}
+```
+asc or desc
+
+
+### _source
+Note the parenthesis
+
+```javascript
+GET /bank/_search
+{
+  "query": { "match_all": {} },
+  "_source": ["account_number", "balance"]
+}
+```
+
 `GET /customer/external/1?pretty`
 
 where pretty is the name of an index
