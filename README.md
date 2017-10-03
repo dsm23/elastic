@@ -19,6 +19,8 @@
 	* [sort](#sort)
 	
 	* [_source](#_source)
+
+	* [_count](#_count)
 	
 	* [Aggregations](#aggregations)
 
@@ -206,6 +208,32 @@ GET /bank/_search
 | gt | Greater than|
 | lte | Less than or equal to|
 | lt | Less than|
+
+#### _source
+
+Turn `_source` off
+
+```javascript
+GET /bank/_search
+{
+    "_source": false,
+    "query" : {
+        "term" : { "gender.keyword" : "F" }
+    }
+}
+```
+
+#### _count
+
+```javascript
+GET /bank/_count
+{
+    "query" : {
+        "term" : { "gender.keyword" : "M" }
+    }
+}
+```
+
 
 # needs work
 
