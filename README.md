@@ -4,11 +4,13 @@
 
 ## Contents
 
-[Basics](#basics)
+* [Basics](#basics)
 
-[Queries](#queries)
+* [Queries](#queries)
 
-[Java](#java)
+	* [URI Search](#uri-search)
+
+* [Java](#java)
 
 ## Basics
 
@@ -30,7 +32,7 @@ GET is the most used for queries
 
 https://www.elastic.co/guide/en/elasticsearch/reference/current/_introducing_the_query_language.html
 
-how to add a jsopn file to an index
+how to add a json file to an index
 
 ```
 curl -H "Content-Type: application/json" -XPOST 'localhost:9200/bank/account/_bulk?pretty&refresh' --data-binary "@accounts.json
@@ -39,6 +41,14 @@ curl -H "Content-Type: application/json" -XPOST 'localhost:9200/bank/account/_bu
 https://www.elastic.co/guide/en/elasticsearch/reference/index.html
 
 ## Queries
+
+#### URI Search
+
+```javascript
+GET bank/_search?q=gender=M
+```
+
+`GET _all`
 
 `GET /customer/external/1?pretty`
 
@@ -146,6 +156,13 @@ SELECT state, COUNT(*) FROM bank GROUP BY state ORDER BY COUNT(*) DESC
 
 ```
 
+|  ||
+|:---:|:---:|
+| gte  | Greater than or equal to |
+| gt | Greater than|
+| lte | Less than or equal to|
+| lt | Less than|
+
 ```javascript
 GET /bank/_search
 {
@@ -171,6 +188,8 @@ equivalent to
 ```sql
 SELECT state, COUNT(*), AVG(balance) FROM bank GROUP BY state ORDER BY COUNT(*) DESC
 ```
+
+all of the following are in a "bool"
 Query DSL | Operand
 |:---:|:---|
 must | AND
