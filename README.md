@@ -115,6 +115,7 @@ GET /bank/_search
     }
   }
 }
+```
 
 Two match queries and returns all accounts containing neither "mill" and "lane"
 ```javascript
