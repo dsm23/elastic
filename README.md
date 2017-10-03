@@ -79,6 +79,19 @@ GET /bank/_search
 }
 ```
 
+Others:
+
+| Query | Definition |
+|:---:|:---:|
+match 				| The standard query for performing full text queries, including fuzzy matching and phrase or proximity queries.
+match_phrase		| Like the match query but used for matching exact phrases or word proximity matches.
+match_phrase_prefix | The poor man’s search-as-you-type. Like the match_phrase query, but does a wildcard search on the final word.
+multi_match			| The multi-field version of the match query.
+common_terms		| A more specialized query which gives more preference to uncommon words.
+query_string		| Supports the compact Lucene query string syntax, allowing you to specify AND|OR|NOT conditions and multi-field search within a single query string. For expert users only.
+simple_query_string	| A simpler, more robust version of the query_string syntax suitable for exposing directly to users.
+
+
 #### size
 
 size defaults to 10 unless told otherwise
@@ -145,6 +158,8 @@ GET /bank/_search
 
 #### filter
 
+Note that filter is a one level below bool, NOT must or should
+
 #### range
 
 ```javascript
@@ -166,7 +181,7 @@ GET /bank/_search
 }
 ```
 
-|  | Definition |
+| Key | Definition |
 |:---:|:---:|
 | gte  | Greater than or equal to |
 | gt | Greater than|
@@ -258,6 +273,8 @@ GET /bank/_search
 ```
 
 #### Aggregations
+
+Similar to COUNT in SQL
 
 ```javascript
 GET /bank/_search
