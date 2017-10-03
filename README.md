@@ -9,6 +9,18 @@
 * [Queries](#queries)
 
 	* [URI Search](#uri-search)
+	
+	* [match_all](#match_all)
+	
+	* [size](#size)
+	
+	* [bool](#bool)
+	
+	* [sort](#sort)
+	
+	* [_source](#_source)
+	
+	* [Aggregations](#aggregations)
 
 * [Java](#java)
 
@@ -102,6 +114,12 @@ GET /bank/_search
 }
 ```
 
+| Query DSL | Operand |
+|:---:|:---|
+must | AND
+must_not | NOT
+should | OR
+
 #### sort
 
 ```javascript
@@ -114,7 +132,7 @@ GET /bank/_search
 asc or desc
 
 
-### _source
+#### _source
 Note the parenthesis
 
 ```javascript
@@ -207,7 +225,7 @@ GET /bank/_search
 }
 ```
 
-#### Agregations
+#### Aggregations
 
 ```javascript
 GET /bank/_search
@@ -265,12 +283,7 @@ equivalent to
 SELECT state, COUNT(*), AVG(balance) FROM bank GROUP BY state ORDER BY COUNT(*) DESC
 ```
 
-all of the following are in a "bool"
-Query DSL | Operand
-|:---:|:---|
-must | AND
-must_not | NOT
-should | OR
+
 
 important terms: query, filter, aggr
 
