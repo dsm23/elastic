@@ -115,7 +115,7 @@ GET /bank/_search
 ```
 
 | Query DSL | Operand |
-|:---:|:---|
+|:---:|:---:|
 must | AND
 must_not | NOT
 should | OR
@@ -142,6 +142,10 @@ GET /bank/_search
   "_source": ["account_number", "balance"]
 }
 ```
+
+#### filter
+
+# needs work
 
 `GET /customer/external/1?pretty`
 
