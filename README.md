@@ -31,7 +31,7 @@
 Cluster Health
 
 2.4
-```javascript
+```sh
 curl 'localhost:9200/_cat/health?v'
 ```
 
@@ -43,7 +43,7 @@ GET /_cat/health?v
 Nodes List within cluster
 
 2.4
-```javascript
+```sh
 curl 'localhost:9200/_cat/nodes?v'
 ```
 
@@ -55,7 +55,7 @@ GET /_cat/nodes?v
 List all Indices
 
 2.4
-```javascript
+```sh
 curl 'localhost:9200/_cat/indices?v'
 ```
 
