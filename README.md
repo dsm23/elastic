@@ -30,18 +30,36 @@
 
 Cluster Health
 
+2.4
+```javascript
+curl 'localhost:9200/_cat/health?v'
+```
+
+5.6
 ```javascript
 GET /_cat/health?v
 ```
 
 Nodes List within cluster
 
+2.4
+```javascript
+curl 'localhost:9200/_cat/nodes?v'
+```
+
+5.6
 ```javascript
 GET /_cat/nodes?v
 ```
 
 List all Indices
 
+2.4
+```javascript
+curl 'localhost:9200/_cat/indices?v'
+```
+
+5.6
 ```javascript
 GET /_cat/indices?v
 ```
@@ -56,7 +74,7 @@ https://www.elastic.co/guide/en/elasticsearch/reference/current/_introducing_the
 
 how to add a json file to an index
 
-```shell session
+```javscript
 $ curl -H "Content-Type: application/json" -XPOST 'localhost:9200/bank/account/_bulk?pretty&refresh' --data-binary "@accounts.json
 ```
 
@@ -177,6 +195,18 @@ GET /bank/_search
 }
 ```
 
+Turn `_source` off
+
+```javascript
+GET /bank/_search
+{
+    "_source": false,
+    "query" : {
+        "term" : { "gender.keyword" : "F" }
+    }
+}
+```
+
 #### filter
 
 Note that filter is a one level below bool, NOT must or should
@@ -209,20 +239,6 @@ GET /bank/_search
 | lte | Less than or equal to|
 | lt | Less than|
 
-#### _source
-
-Turn `_source` off
-
-```javascript
-GET /bank/_search
-{
-    "_source": false,
-    "query" : {
-        "term" : { "gender.keyword" : "F" }
-    }
-}
-```
-
 #### _count
 
 ```javascript
@@ -232,8 +248,38 @@ GET /bank/_count
         "term" : { "gender.keyword" : "M" }
     }
 }
+
+GET /bank/_count
+{
+  "query" : {
+    "bool": {
+      "should": [
+        { "match": { "gender": "F" } },
+        { "match": { "gender": "M" } }
+      ]
+    }
+  }
+}
 ```
 
+https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html
+
+#### validate
+
+```javascript
+GET /bank/_validate/query
+{
+  "query" : {
+    "bool" : {
+      "must" : {
+        "query_string" : {
+          "query" : "*:*"
+        }
+      }
+    }
+  }
+}
+```
 
 # needs work
 
